@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Meet Singles Near You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(0,0,0,0.85);
+      padding: 30px 25px;
+      max-width: 420px;
+      width: 100%;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #ddd;
+      margin-bottom: 25px;
+    }
+
+    .cta-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: #ff2d55;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .cta-btn:hover {
+      background: #ff1c45;
+      transform: scale(1.03);
+    }
+
+    .footer {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 20px;
+    }
+
+    /* Age Gate */
+    .age-gate {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .age-box {
+      background: #111;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 360px;
+      width: 100%;
+    }
+
+    .age-box h2 {
+      margin-bottom: 15px;
+    }
+
+    .age-box button {
+      margin: 10px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .yes {
+      background: #28a745;
+      color: #fff;
+    }
+
+    .no {
+      background: #dc3545;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Age Gate -->
+  <div class="age-gate" id="ageGate">
+    <div class="age-box">
+      <h2>18+ Confirmation</h2>
+      <p>You must be at least 18 years old to continue.</p>
+      <button class="yes" onclick="allowAccess()">I am 18+</button>
+      <button class="no" onclick="denyAccess()">I am under 18</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Meet Real Singles Near You</h1>
+    <p>
+      Thousands of local singles are waiting to chat right now.  
+      Quick sign-up. Private & secure.
+    </p>
+
+    <a class="cta-btn" href="https://hotpussieshere.com/9kx3xWWx?aid=hhghazfag&kid=hdgafghapdg">
+      Continue →
+    </a>
+
+    <div class="footer">
+      © 2025 | 18+ Only | Privacy Protected
+    </div>
+  </div>
+
+  <script>
+    function allowAccess() {
+      document.getElementById('ageGate').style.display = 'none';
+    }
+
+    function denyAccess() {
+      alert('You must be 18+ to access this site.');
+      window.location.href = 'https://www.google.com';
+    }
+  </script>
+
+</body>
+  </html>
