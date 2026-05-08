@@ -2,12 +2,14 @@ const API_KEY = "6d76ac090b40ac652d1eff168cd26081593651a4BWQmxviZr0wkzmHEQW6P6mT
 
 const phoneInput = document.querySelector("#phone");
 
-const iti = window.intlTelInput(phoneInput, {
-  initialCountry: "auto",
-  separateDialCode: true,
-  utilsScript:
-  "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.10/build/js/utils.js"
-});
+    window.intlTelInput(phoneInput, {
+      initialCountry: "bd",
+      separateDialCode: true,
+      preferredCountries: ["bd", "in", "us", "gb"],
+      utilsScript:
+      "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.10/build/js/utils.js"
+    });
+
 
 const sendBtn = document.getElementById("sendBtn");
 const verifyBtn = document.getElementById("verifyBtn");
