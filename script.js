@@ -2,12 +2,11 @@ const API_KEY = "6d76ac090b40ac652d1eff168cd26081593651a4BWQmxviZr0wkzmHEQW6P6mT
 
 const phoneInput = document.querySelector("#phone");
 
-window.intlTelInput(phoneInput, {
-  initialCountry: "bd",
+const iti = window.intlTelInput(phoneInput, {
+  initialCountry: "auto",
   separateDialCode: true,
-  preferredCountries: ["bd", "in", "us", "gb"],
   utilsScript:
-    "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.10/build/js/utils.js"
+  "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.10/build/js/utils.js"
 });
 
 const sendBtn = document.getElementById("sendBtn");
@@ -58,8 +57,4 @@ sendBtn.addEventListener("click", async () => {
 
   try {
 
-    const response = await fetch("https://textbelt.com/text", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
 });
