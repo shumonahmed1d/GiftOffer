@@ -77,4 +77,34 @@ sendBtn.addEventListener("click", async () => {
       window.recaptchaVerifier
     );
 
+    window.confirmationResult = confirmationResult;
+
+    statusDiv.innerText = "OTP Sent Successfully";
+
+    startTimer();
+
+  } catch (error) {
+
+    alert(error.message);
+  }
+});
+
+verifyBtn.addEventListener("click", async () => {
+
+  const code = document.getElementById("otp").value;
+
+  try {
+
+    const result =
+    await window.confirmationResult.confirm(code);
+
+    const user = result.user;
+
+    statusDiv.innerText =
+    `Login Success: ${user.phoneNumber}`;
+
+  } catch (error) {
+
+    alert("Invalid OTP");
+  }
 });
