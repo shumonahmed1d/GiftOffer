@@ -1,22 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-  getAuth,
-  RecaptchaVerifier,
-  signInWithPhoneNumber
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCgaX-52rSZYOxXVH5yS9c3zvpqVJKE8r4",
-  authDomain: "mart-view.firebaseapp.com",
-  projectId: "mart-view",
-  storageBucket: "mart-view.firebasestorage.app",
-  messagingSenderId: "1020057054383",
-  appId: "1:1020057054383:web:16b12340808cd01129f85a",
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const API_KEY = "6d76ac090b40ac652d1eff168cd26081593651a4BWQmxviZr0wkzmHEQW6P6mTjf";
 
 const phoneInput = document.querySelector("#phone");
 
@@ -32,11 +14,12 @@ const verifyBtn = document.getElementById("verifyBtn");
 const timerDiv = document.getElementById("timer");
 const statusDiv = document.getElementById("status");
 
-window.recaptchaVerifier = new RecaptchaVerifier(auth, sendBtn, {
-  size: 'invisible'
-});
-
+let generatedOTP = "";
 let countdown;
+
+function generateOTP() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
 
 function startTimer() {
 
@@ -68,43 +51,14 @@ sendBtn.addEventListener("click", async () => {
 
   const phoneNumber = iti.getNumber();
 
-  try {
+  generatedOTP = generateOTP();
 
-    const confirmationResult =
-    await signInWithPhoneNumber(
-      auth,
-      phoneNumber,
-      window.recaptchaVerifier
-    );
-
-    window.confirmationResult = confirmationResult;
-
-    statusDiv.innerText = "OTP Sent Successfully";
-
-    startTimer();
-
-  } catch (error) {
-
-    alert(error.message);
-  }
-});
-
-verifyBtn.addEventListener("click", async () => {
-
-  const code = document.getElementById("otp").value;
+  statusDiv.innerText = "Sending OTP...";
 
   try {
 
-    const result =
-    await window.confirmationResult.confirm(code);
-
-    const user = result.user;
-
-    statusDiv.innerText =
-    `Login Success: ${user.phoneNumber}`;
-
-  } catch (error) {
-
-    alert("Invalid OTP");
-  }
+    const response = await fetch("https://textbelt.com/text", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
 });
