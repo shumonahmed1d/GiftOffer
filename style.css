@@ -1,4 +1,16 @@
 *{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+}
+body{
+  background:#0f172a;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
 .container{
   width:100%;
@@ -47,7 +59,6 @@ button:disabled{
   opacity:0.6;
   cursor:not-allowed;
 }
-
 #timer{
   color:#cbd5e1;
   margin-top:10px;
