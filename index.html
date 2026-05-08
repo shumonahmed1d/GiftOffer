@@ -1,40 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unlock Exclusive Rewards | Available Worldwide</title>
-<meta name="description" content="Discover exclusive rewards available in your country. Free access. Limited availability.">
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worldwide mart Login</title>
 
-<script>
-const SMART_LINK = "https://singingfiles.com/show.php?l=0&u=685837&id=73678";
+  <link rel="stylesheet" href="style.css">
 
-function goOffer() {
-  window.open(SMART_LINK, "_blank", "noopener,noreferrer");
-}
-</script>
-
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.10/build/css/intlTelInput.css"/>
 </head>
+<body>
 
-<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+<div class="container">
 
-<!-- Sticky CTA -->
-<div onclick="goOffer()" class="fixed top-0 w-full z-50 bg-gradient-to-r from-blue-600 to-purple-600 text-center py-3 font-semibold cursor-pointer">
-🔥 Tap Here to Check Available Offers in Your Country
+  <div class="card">
+
+    <h1>Phone Login</h1>
+
+    <input type="tel" id="phone">
+
+    <button id="sendBtn">
+      Send OTP
+    </button>
+
+    <div id="timer"></div>
+
+    <input
+      type="text"
+      id="otp"
+      placeholder="Enter OTP"
+    >
+
+    <button id="verifyBtn">
+      Verify OTP
+    </button>
+
+    <div id="status"></div>
+
+  </div>
+
 </div>
 
-<!-- Hero -->
-<section class="min-h-screen flex items-center justify-center px-4 pt-20">
-<div class="max-w-4xl text-center">
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.10/build/js/intlTelInput.min.js"></script>
 
-<img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7" class="mx-auto mb-8 rounded-xl shadow-2xl max-w-xs">
+<script type="module" src="script.js"></script>
 
-<h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-Unlock Exclusive Rewards Available in Your Country
-</h1>
-
+</body>
+</html>
 <p class="text-xl text-gray-300 mb-8">
 Trusted by 250,000+ users worldwide. Free access. Limited availability.
 </p>
