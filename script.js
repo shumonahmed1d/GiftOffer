@@ -7,12 +7,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCgaX-52rSZYOxXVH5yS9c3zvpqVJKE8r4",
+  authDomain: "mart-view.firebaseapp.com",
+  projectId: "mart-view",
+  storageBucket: "mart-view.firebasestorage.app",
+  messagingSenderId: "1020057054383",
+  appId: "1:1020057054383:web:16b12340808cd01129f85a",
+  measurementId: "G-7T5RZHW77L"
 };
 
 const app = initializeApp(firebaseConfig);
