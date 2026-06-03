@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canva Pro Team</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <script src='//libtl.com/sdk.js' data-zone='11091238' data-sdk='show_11091238'></script>
+
+    <style>
+        /* Neon Glow Effects */
+        .neon-border {
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.3), inset 0 0 12px rgba(0, 242, 254, 0.1);
+        }
+        .neon-btn-purple {
+            box-shadow: 0 4px 15px rgba(147, 51, 234, 0.5);
+        }
+        .neon-btn-green {
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
+        }
+        .step-pill {
+            transition: all 0.3s ease;
+        }
+        .step-active {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            color: #000;
+            font-weight: bold;
+            box-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+        }
+        .step-completed {
+            background-color: #22c55e !important;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-[#0b0f19] text-gray-200 font-sans flex justify-center items-center min-h-screen p-4 select-none">
+
+    <div class="w-full max-w-sm bg-[#131a2c] rounded-3xl border border-gray-800 shadow-2xl overflow-hidden">
+        
+        <div class="w-full h-36 bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center relative">
+            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=500&q=80" alt="Banner Background" class="absolute w-full h-full object-cover mix-blend-overlay opacity-30">
+            <h1 class="text-4xl font-extrabold tracking-wide text-white drop-shadow-md italic">Canva</h1>
+        </div>
+
+        <div class="p-5 space-y-5">
+            
+            <div id="instruction-box" class="neon-border border border-[#00f2fe]/60 bg-[#1a243a] rounded-xl p-2.5 text-center text-xs text-cyan-400 flex items-center justify-center gap-1.5 leading-relaxed">
+                📢 Complete 4 Steps. Watch 2 ads per step to unlock Canva Pro.
+            </div>
+
+            <div class="grid grid-cols-4 gap-1.5">
+                <div id="step-1" class="step-pill step-active bg-gray-800/80 text-center py-1.5 rounded-lg text-[10px] uppercase font-semibold tracking-wider">Step 1</div>
+                <div id="step-2" class="step-pill bg-gray-800/40 text-gray-600 text-center py-1.5 rounded-lg text-[10px] uppercase font-semibold tracking-wider">Step 2</div>
+                <div id="step-3" class="step-pill bg-gray-800/40 text-gray-600 text-center py-1.5 rounded-lg text-[10px] uppercase font-semibold tracking-wider">Step 3</div>
+                <div id="step-4" class="step-pill bg-gray-800/40 text-gray-600 text-center py-1.5 rounded-lg text-[10px] uppercase font-semibold tracking-wider">Step 4</div>
+            </div>
+
+            <div class="space-y-3.5">
+                <button id="ad-trigger-btn" onclick="startAdSequence()" class="w-full neon-btn-purple bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-3.5 px-4 rounded-xl transition-all active:scale-98 flex flex-col items-center justify-center gap-0.5 cursor-pointer">
+                    <span id="btn-primary-text" class="text-base tracking-wide">Watch Ads to unlock Canva Pro</span>
+                    <span id="btn-sub-text" class="text-[11px] text-purple-200 font-normal">(Ad 1 of 2 for current step)</span>
+                </button>
+
+                <div id="unlock-section" class="hidden space-y-3.5">
+                    <button class="w-full neon-btn-green bg-green-600 text-white font-bold py-3 rounded-xl text-sm flex items-center justify-center gap-2">
+                        🎉 Click to Open Canva Pro
+                    </button>
+                    
+                    <div class="bg-[#1a243a] border border-gray-800 rounded-xl p-3 text-center">
+                        <p class="text-[11px] text-gray-400 mb-1.5">🌐 Copy link and paste it in your browser:</p>
+                        <div class="bg-[#0b0f19] p-2 rounded-lg text-[11px] text-green-400 break-all border border-gray-900 select-all font-mono">
+                            https://www.canva.com/brand/join?token=YOUR_CUSTOM_TOKEN_HERE
+                        </div>
+                        <button onclick="navigator.clipboard.writeText('https://www.canva.com/brand/join?token=YOUR_CUSTOM_TOKEN_HERE'); alert('Link copied!')" class="mt-2.5 bg-cyan-600 text-black text-[11px] font-bold py-1.5 px-3 rounded-md cursor-pointer hover:bg-cyan-500 transition-colors">
+                            📋 Copy Canva Pro Link
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800/60 pt-3.5 space-y-2">
+                <a href="https://t.me/your_channel" target="_blank" class="w-full bg-[#1b2234] hover:bg-[#232c42] text-center text-xs font-medium py-2.5 rounded-xl block transition-colors tracking-wide">
+                    💬 Join Telegram Channel
+                </a>
+                
+               <!-- <a href="#" class="w-full bg-[#1b2234] hover:bg-[#232c42] text-center text-xs font-medium py-2.5 rounded-xl block transition-colors tracking-wide">
+                    🚀 Get Premium Apps
+                </a> -->
+            </div>
+
+            <div class="text-center text-[10px] text-gray-600 pt-1 tracking-wider">
+                Powered by <span class="text-cyan-500 font-semibold">Martian</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let adsWatchedInCurrentStep = 0;
+
+        const btn = document.getElementById('ad-trigger-btn');
+        const primaryText = document.getElementById('btn-primary-text');
+        const subText = document.getElementById('btn-sub-text');
+
+        function startAdSequence() {
+            if (currentStep > 4) return;
+            btn.disabled = true;
+            primaryText.innerText = "Loading Ad 1...";
+            fireMonetagAd();
+        }
+
+        function fireMonetagAd() {
+            if (typeof show_11091238 === 'function') {
+                show_11091238()
+                    .then(() => {
+                        handleAdWatchSuccess();
+                    })
+                    .catch((err) => {
+                        console.error("Ad failed or skipped:", err);
+                        btn.disabled = false;
+                        primaryText.innerText = "Watch Ads to unlock Canva Pro";
+                        alert("Ad load failed or ad-blocker detected. Please try again.");
+                    });
+            } else {
+                // Fallback testing wrapper
+                console.warn("Monetag SDK template fallback active.");
+                setTimeout(() => {
+                    handleAdWatchSuccess();
+                }, 2000);
+            }
+        }
+
+        function handleAdWatchSuccess() {
+            adsWatchedInCurrentStep++;
+
+            if (adsWatchedInCurrentStep === 1) {
+                primaryText.innerText = "Loading Ad 2...";
+                subText.innerText = "(Ad 2 of 2 for current step)";
+                fireMonetagAd(); // Automatic loop trigger
+            } 
+            else if (adsWatchedInCurrentStep === 2) {
+                processStepUp();
+            }
+        }
+
+        function processStepUp() {
+            const completedPill = document.getElementById(`step-${currentStep}`);
+            completedPill.classList.remove('step-active');
+            completedPill.classList.add('step-completed');
+
+            adsWatchedInCurrentStep = 0;
+            currentStep++;
+
+            if (currentStep <= 4) {
+                btn.disabled = false;
+                primaryText.innerText = "Watch Ads to unlock Canva Pro";
+                subText.innerText = "(Ad 1 of 2 for current step)";
+                
+                const nextPill = document.getElementById(`step-${currentStep}`);
+                nextPill.classList.add('step-active');
+            } else {
+                btn.classList.add('hidden');
+                document.getElementById('instruction-box').innerHTML = "🎉 Validation Complete! Canva Pro Unlocked.";
+                document.getElementById('instruction-box').classList.replace('text-cyan-400', 'text-green-400');
+                document.getElementById('unlock-section').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
