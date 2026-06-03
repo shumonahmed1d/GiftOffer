@@ -31,6 +31,7 @@
         .step-completed {
             background-color: #22c55e !important;
             color: white;
+            box-shadow: none !important;
         }
     </style>
 </head>
@@ -109,27 +110,24 @@
             btn.disabled = true;
             primaryText.innerText = "Connecting to Ad Server...";
             
-            // Core verification call
             fireMonetagAd();
         }
 
         function fireMonetagAd() {
-            // STRICT RULE 1: SDK function obosshoi file memory-te thakte hobe (AdBlocker thakle load hoy na)
             if (typeof show_11091238 === 'function') {
                 show_11091238()
                     .then(() => {
-                        // STRICT RULE 2: Shudhumat_ro promise return successfully ashle steps barhbe
+                        // Success block logic updated
                         handleAdWatchSuccess();
                     })
                     .catch((err) => {
-                        console.error("Ad closed or dismissed by user.", err);
+                        console.error("Ad error/dismissed:", err);
                         resetButtonState();
-                        alert("Error: Ad directly skipped or closed. Next step locked.");
+                        alert("Error: Ad closed or dismissed. Complete the full watch to unlock.");
                     });
             } else {
-                // Kono automatic cross/bypass thakbe na, button reset hoye ekhanei thakbe
                 resetButtonState();
-                alert("Ads are not ready! Please disable Ad-Blocker or VPN and refresh the app.");
+                alert("Ads are not ready! Disable Ad-Blocker/VPN and refresh.");
             }
         }
 
@@ -148,34 +146,44 @@
             adsWatchedInCurrentStep++;
 
             if (adsWatchedInCurrentStep === 1) {
-                primaryText.innerText = "Connecting to 2nd Ad...";
+                primaryText.innerText = "Loading Ad 2...";
                 subText.innerText = "(Ad 2 of 2 for current step)";
                 
-                // Immediately second ad trigger
-                fireMonetagAd();
-            } 
-            else if (adsWatchedInCurrentStep === 2) {
+                // ⏳ 800ms block break separation jate browsers token trigger block na hoy
+                setTimeout(() => {
+                    fireMonetagAd();
+                }, 800);
+                
+            } else if (adsWatchedInCurrentStep === 2) {
+                // Instantly execute structural logic block step advancement
                 processStepUp();
             }
         }
 
         function processStepUp() {
+            // Step color code visual active update
             const completedPill = document.getElementById(`step-${currentStep}`);
-            completedPill.classList.remove('step-active');
-            completedPill.classList.add('step-completed');
+            if (completedPill) {
+                completedPill.classList.remove('step-active');
+                completedPill.classList.add('step-completed');
+            }
 
+            // Memory resetting state
             adsWatchedInCurrentStep = 0;
             currentStep++;
 
             if (currentStep <= 4) {
+                // Prepare button state for new step interaction
                 btn.disabled = false;
                 primaryText.innerText = "Watch Ads to unlock Canva Pro";
                 subText.innerText = "(Ad 1 of 2 for current step)";
                 
                 const nextPill = document.getElementById(`step-${currentStep}`);
-                nextPill.classList.add('active'); // CSS focus trigger
-                nextPill.classList.add('step-active');
+                if (nextPill) {
+                    nextPill.classList.add('step-active');
+                }
             } else {
+                // All 4 steps checked out successfully -> Displays Links 
                 btn.classList.add('hidden');
                 document.getElementById('instruction-box').innerHTML = "🎉 Validation Complete! Canva Pro Unlocked.";
                 document.getElementById('instruction-box').classList.replace('text-cyan-400', 'text-green-400');
@@ -184,4 +192,4 @@
         }
     </script>
 </body>
-</html>
+                        </html>
