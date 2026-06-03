@@ -6,7 +6,7 @@
     <title>Canva Pro Team</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
-    <script src='//libtl.com/sdk.js' data-zone='11091238' data-sdk='show_11091238'></script>
+    <script src='https://libtl.com/sdk.js' data-zone='11091238' data-sdk='show_11091238' crossorigin="anonymous"></script>
 
     <style>
         /* Neon Glow Effects */
@@ -83,14 +83,13 @@
                 <a href="https://t.me/your_channel" target="_blank" class="w-full bg-[#1b2234] hover:bg-[#232c42] text-center text-xs font-medium py-2.5 rounded-xl block transition-colors tracking-wide">
                     💬 Join Telegram Channel
                 </a>
-                
-               <!-- <a href="#" class="w-full bg-[#1b2234] hover:bg-[#232c42] text-center text-xs font-medium py-2.5 rounded-xl block transition-colors tracking-wide">
+                <a href="#" class="w-full bg-[#1b2234] hover:bg-[#232c42] text-center text-xs font-medium py-2.5 rounded-xl block transition-colors tracking-wide">
                     🚀 Get Premium Apps
-                </a> -->
+                </a>
             </div>
 
             <div class="text-center text-[10px] text-gray-600 pt-1 tracking-wider">
-                Powered by <span class="text-cyan-500 font-semibold">Martian</span>
+                Powered by <span class="text-cyan-500 font-semibold">Alex</span>
             </div>
         </div>
 
@@ -106,29 +105,42 @@
 
         function startAdSequence() {
             if (currentStep > 4) return;
+            
             btn.disabled = true;
-            primaryText.innerText = "Loading Ad 1...";
+            primaryText.innerText = "Connecting to Ad Server...";
+            
+            // Core verification call
             fireMonetagAd();
         }
 
         function fireMonetagAd() {
+            // STRICT RULE 1: SDK function obosshoi file memory-te thakte hobe (AdBlocker thakle load hoy na)
             if (typeof show_11091238 === 'function') {
                 show_11091238()
                     .then(() => {
+                        // STRICT RULE 2: Shudhumat_ro promise return successfully ashle steps barhbe
                         handleAdWatchSuccess();
                     })
                     .catch((err) => {
-                        console.error("Ad failed or skipped:", err);
-                        btn.disabled = false;
-                        primaryText.innerText = "Watch Ads to unlock Canva Pro";
-                        alert("Ad load failed or ad-blocker detected. Please try again.");
+                        console.error("Ad closed or dismissed by user.", err);
+                        resetButtonState();
+                        alert("Error: Ad directly skipped or closed. Next step locked.");
                     });
             } else {
-                // Fallback testing wrapper
-                console.warn("Monetag SDK template fallback active.");
-                setTimeout(() => {
-                    handleAdWatchSuccess();
-                }, 2000);
+                // Kono automatic cross/bypass thakbe na, button reset hoye ekhanei thakbe
+                resetButtonState();
+                alert("Ads are not ready! Please disable Ad-Blocker or VPN and refresh the app.");
+            }
+        }
+
+        function resetButtonState() {
+            btn.disabled = false;
+            if (adsWatchedInCurrentStep === 1) {
+                primaryText.innerText = "Watch Ads to unlock Canva Pro";
+                subText.innerText = "(Ad 2 of 2 for current step)";
+            } else {
+                primaryText.innerText = "Watch Ads to unlock Canva Pro";
+                subText.innerText = "(Ad 1 of 2 for current step)";
             }
         }
 
@@ -136,9 +148,11 @@
             adsWatchedInCurrentStep++;
 
             if (adsWatchedInCurrentStep === 1) {
-                primaryText.innerText = "Loading Ad 2...";
+                primaryText.innerText = "Connecting to 2nd Ad...";
                 subText.innerText = "(Ad 2 of 2 for current step)";
-                fireMonetagAd(); // Automatic loop trigger
+                
+                // Immediately second ad trigger
+                fireMonetagAd();
             } 
             else if (adsWatchedInCurrentStep === 2) {
                 processStepUp();
@@ -159,6 +173,7 @@
                 subText.innerText = "(Ad 1 of 2 for current step)";
                 
                 const nextPill = document.getElementById(`step-${currentStep}`);
+                nextPill.classList.add('active'); // CSS focus trigger
                 nextPill.classList.add('step-active');
             } else {
                 btn.classList.add('hidden');
